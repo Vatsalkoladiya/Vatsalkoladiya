@@ -1,0 +1,589 @@
+import React from "react";
+import {
+  Form,
+  Input,
+  Button,
+  Row,
+  Col,
+  DatePicker,
+  Space,
+  Checkbox,
+} from "antd";
+import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
+
+function onChange2(checkedValues) {
+  console.log("checked = ", checkedValues);
+}
+const { RangePicker } = DatePicker;
+const Joker = () => {
+  const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
+
+  const validateMessages = {
+    required: "${label} is required!",
+    types: {
+      email: "${label} is not a valid email!",
+      number: "${label} is not a valid number!",
+    },
+    number: {
+      range: "${label} must be between ${min} and ${max}",
+    },
+  };
+
+  const onFinish = (values) => {
+    console.log(values);
+  };
+
+  return (
+    <Form
+      {...layout}
+      name="nest-messages"
+      onFinish={onFinish}
+      validateMessages={validateMessages}
+      initialValues={{
+        experience: [{}],
+        education: [{}],
+        project: [{}],
+      }}
+    >
+      <Row>
+        <Col span={24}>
+          <Row>
+            <Col span={24}>
+              <h2 style={{ textAlign: "center" }}>Resume Maker</h2>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Row gutter={16}>
+                <Col span={24}>
+                  <Row>
+                    <Col span={24}>
+                      <h2 style={{ textAlign: "center" }}>Personal Info</h2>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col span={24}>
+                      <Row gutter={16}>
+                        <Col span={12}>
+                          <Row>
+                            <Col span={24}>
+                              <Form.Item
+                                name={["user", "name"]}
+                                label="Name"
+                                rules={[{ required: true }]}
+                              >
+                                <Input />
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col span={24}>
+                              <Form.Item
+                                name={["user", "email"]}
+                                label="Email"
+                                rules={[{ type: "email" }]}
+                              >
+                                <Input />
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col span={24}>
+                              <Form.Item name={["user", "about"]} label="About">
+                                <Input.TextArea />
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                        </Col>
+                        <Col span={12}>
+                          <Row>
+                            <Col span={24}>
+                              <label htmlFor="Skills">Birthdate</label>
+                              <Form.Item name={["user", "birthdate"]}>
+                                <DatePicker />
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col span={24}>
+                              <label htmlFor="Languages">Languages</label>
+                              <Form.Item name={["user", "languages"]}>
+                                <Checkbox.Group
+                                  style={{ width: "100%" }}
+                                  onChange={onChange2}
+                                >
+                                  <Row>
+                                    <Col span={8}>
+                                      <Checkbox value="Gujarati">
+                                        Gujarati
+                                      </Checkbox>
+                                    </Col>
+                                    <Col span={8}>
+                                      <Checkbox value="English">
+                                        English
+                                      </Checkbox>
+                                    </Col>
+                                    <Col span={8}>
+                                      <Checkbox value="Hindi">Hindi </Checkbox>
+                                    </Col>
+                                  </Row>
+                                </Checkbox.Group>
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                          <Row>
+                            <Col span={24}>
+                              <label htmlFor="Skills">Skills</label>
+                              <Form.Item name={["user", "skills"]}>
+                                <Checkbox.Group
+                                  style={{ width: "100%" }}
+                                  onChange={onChange2}
+                                >
+                                  <Row>
+                                    <Col span={8}>
+                                      <Checkbox value="Cyber Security">
+                                        Cyber Security
+                                      </Checkbox>
+                                    </Col>
+                                    <Col span={8}>
+                                      <Checkbox value="Cloud Computing">
+                                        Cloud Computing
+                                      </Checkbox>
+                                    </Col>
+                                    <Col span={8}>
+                                      <Checkbox value="Software Development">
+                                        Software Development
+                                      </Checkbox>
+                                    </Col>
+                                  </Row>
+                                  <Row>
+                                    <Col span={8}>
+                                      <Checkbox value="AI and Machine Learning">
+                                        AI and Machine Learning
+                                      </Checkbox>
+                                    </Col>
+                                    <Col span={8}>
+                                      <Checkbox value="Network Configuration">
+                                        Network Configuration
+                                      </Checkbox>
+                                    </Col>
+                                    <Col span={8}>
+                                      <Checkbox value="Database Management">
+                                        Database Management
+                                      </Checkbox>
+                                    </Col>
+                                  </Row>
+                                </Checkbox.Group>
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+              <Row gutter={16}>
+                <Col span={24} style={{ paddingLeft: "220px" }}>
+                  <Row>
+                    <Col span={24}>
+                      <h2 style={{ textAlign: "center" }}>Experience</h2>
+                    </Col>
+                  </Row>
+                  <Row justify="space-around" align="middle">
+                    <Col span={24}>
+                      <Form.List name="experience">
+                        {(fields, { add, remove }) => (
+                          <>
+                            {fields.map(
+                              ({ key, name, fieldKey, ...restField }) => (
+                                <Space
+                                  key={key}
+                                  style={{ display: "flex", marginBottom: 8 }}
+                                  align="baseline"
+                                >
+                                  <Row gutter={8}>
+                                    <Col span={12}>
+                                      <Row>
+                                        <Col span={24}>
+                                          <Form.Item
+                                            {...restField}
+                                            name={[name, "name"]}
+                                            label="Name"
+                                            rules={[{ required: true }]}
+                                          >
+                                            <Input />
+                                          </Form.Item>
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col span={24}>
+                                          <Form.Item
+                                            {...restField}
+                                            name={[name, "location"]}
+                                            label="Location"
+                                            rules={[{ required: true }]}
+                                          >
+                                            <Input />
+                                          </Form.Item>
+                                        </Col>
+                                      </Row>
+
+                                      <Row>
+                                        <Col span={24}>
+                                          <Form.Item
+                                            {...restField}
+                                            name={[name, "desciption"]}
+                                            label="Desciption"
+                                          >
+                                            <Input.TextArea />
+                                          </Form.Item>
+                                        </Col>
+                                      </Row>
+                                    </Col>
+                                    <Col span={12}>
+                                      <Row>
+                                        <Col span={24}>
+                                          <Form.Item
+                                            {...restField}
+                                            name={[name, "jobpost"]}
+                                            label="Job post"
+                                          >
+                                            <Input />
+                                          </Form.Item>
+                                        </Col>
+                                      </Row>
+                                      <Row>
+                                        <Col span={24}>
+                                          <label htmlFor="Skills">
+                                            From-To
+                                          </label>
+                                          <Form.Item
+                                            {...restField}
+                                            name={[name, "From-to"]}
+                                            lable="From-To"
+                                          >
+                                            <RangePicker />
+                                          </Form.Item>
+                                        </Col>
+                                      </Row>
+                                    </Col>
+                                  </Row>
+                                  <MinusCircleOutlined
+                                    onClick={() => remove(name)}
+                                  />
+                                </Space>
+                              )
+                            )}
+                            <Form.Item>
+                              <Button
+                                type="dashed"
+                                onClick={() => add()}
+                                block
+                                icon={<PlusOutlined />}
+                              >
+                                Add Experience
+                              </Button>
+                            </Form.Item>
+                          </>
+                        )}
+                      </Form.List>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+              {/* <Row>
+                <Col span={24}>
+                  <h2 style={{ textAlign: "center" }}>Experience</h2>
+                </Col>
+              </Row>
+              <Row justify="space-around" align="middle">
+                <Col span={24}>
+                  <Form.List name="experience">
+                    {(fields, { add, remove }) => (
+                      <>
+                        {fields.map(({ key, name, fieldKey, ...restField }) => (
+                          <Space
+                            key={key}
+                            style={{ display: "flex", marginBottom: 8 }}
+                            align="baseline"
+                          >
+                            <Row gutter={8}>
+                              <Col span={12}>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "name"]}
+                                      label="Name"
+                                      rules={[{ required: true }]}
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "location"]}
+                                      label="Location"
+                                      rules={[{ required: true }]}
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "desciption"]}
+                                      label="Desciption"
+                                    >
+                                      <Input.TextArea />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                              </Col>
+                              <Col span={12}>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "jobpost"]}
+                                      label="Job post"
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col span={24}>
+                                    <label htmlFor="Skills">From-To</label>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "From-to"]}
+                                      lable="From-To"
+                                    >
+                                      <RangePicker />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Row>
+                            <MinusCircleOutlined onClick={() => remove(name)} />
+                          </Space>
+                        ))}
+                        <Form.Item>
+                          <Button
+                            type="dashed"
+                            onClick={() => add()}
+                            block
+                            icon={<PlusOutlined />}
+                          >
+                            Add Experience
+                          </Button>
+                        </Form.Item>
+                      </>
+                    )}
+                  </Form.List>
+                </Col>
+              </Row> */}
+              <Row>
+                <Col span={24}>
+                  <h2 style={{ textAlign: "center" }}>Education</h2>
+                </Col>
+              </Row>
+              {/* <Row gutter={8}>
+                <Col span={12}></Col>
+              </Row> */}
+              <Row justify="space-around" align="middle">
+                <Col span={24} style={{ paddingLeft: "220px" }}>
+                  <Form.List name="education">
+                    {(fields, { add, remove }) => (
+                      <>
+                        {fields.map(({ key, name, fieldKey, ...restField }) => (
+                          <Space
+                            key={key}
+                            style={{ display: "flex", marginBottom: 12 }}
+                            align="baseline"
+                          >
+                            <Row gutter={8}>
+                              <Col span={12}>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "education"]}
+                                      label="Name"
+                                      rules={[{ required: true }]}
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "e_location"]}
+                                      label="Location"
+                                      rules={[{ required: true }]}
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "e_about"]}
+                                      label="About"
+                                    >
+                                      <Input.TextArea />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                              </Col>
+                              <Col span={12}>
+                                <Row>
+                                  <Col span={24}>
+                                    <label htmlFor="Skills">From-To</label>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "From-To"]}
+                                      lable="From-To"
+                                    >
+                                      <RangePicker />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Row>
+                            <MinusCircleOutlined onClick={() => remove(name)} />
+                          </Space>
+                        ))}
+                        <Form.Item>
+                          <Button
+                            type="dashed"
+                            onClick={() => add()}
+                            block
+                            icon={<PlusOutlined />}
+                          >
+                            Add Education
+                          </Button>
+                        </Form.Item>
+                      </>
+                    )}
+                  </Form.List>
+                </Col>
+              </Row>
+              <Row>
+                <Col span={24}>
+                  <h2 style={{ textAlign: "center" }}>Projects</h2>
+                </Col>
+              </Row>
+
+              <Row justify="space-around" align="middle">
+                <Col span={24} style={{ paddingLeft: "220px" }}>
+                  <Form.List name="project">
+                    {(fields, { add, remove }) => (
+                      <>
+                        {fields.map(({ key, name, fieldKey, ...restField }) => (
+                          <Space
+                            key={key}
+                            style={{ display: "flex", marginBottom: 12 }}
+                            align="baseline"
+                          >
+                            <Row gutter={8}>
+                              <Col span={12}>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "project "]}
+                                      label="project Name"
+                                      rules={[{ required: true }]}
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                                <Row>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "project_role"]}
+                                      label="project Role"
+                                      rules={[{ required: true }]}
+                                    >
+                                      <Input />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+
+                                <Row>
+                                  <Col span={24}>
+                                    {/* <Form.Item
+                                      {...restField}
+                                      name={[name, "e_about"]}
+                                      label="About"
+                                    >
+                                      <Input.TextArea />
+                                    </Form.Item> */}
+                                  </Col>
+                                </Row>
+                              </Col>
+                              <Col span={12}>
+                                <Row gutter={12}>
+                                  <Col span={24}>
+                                    <Form.Item
+                                      {...restField}
+                                      name={[name, "p_desc"]}
+                                      label="Desciption"
+                                    >
+                                      <Input.TextArea />
+                                    </Form.Item>
+                                  </Col>
+                                </Row>
+                              </Col>
+                            </Row>
+                            <MinusCircleOutlined onClick={() => remove(name)} />
+                          </Space>
+                        ))}
+                        <Form.Item>
+                          <Button
+                            type="dashed"
+                            onClick={() => add()}
+                            block
+                            icon={<PlusOutlined />}
+                          >
+                            Add Projects
+                          </Button>
+                        </Form.Item>
+                      </>
+                    )}
+                  </Form.List>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+
+      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+        <Button type="primary" htmlType="submit">
+          Submit
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
+export default Joker;
