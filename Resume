@@ -75,7 +75,7 @@ const Joker = () => {
                                 label="Name"
                                 rules={[{ required: true }]}
                               >
-                                <Input />
+                                <Input placeholder="Enter Your name" />
                               </Form.Item>
                             </Col>
                           </Row>
@@ -86,14 +86,14 @@ const Joker = () => {
                                 label="Email"
                                 rules={[{ type: "email" }]}
                               >
-                                <Input />
+                                <Input placeholder="Enter Your email" />
                               </Form.Item>
                             </Col>
                           </Row>
                           <Row>
                             <Col span={24}>
                               <Form.Item name={["user", "about"]} label="About">
-                                <Input.TextArea />
+                                <Input.TextArea placeholder="typing..." />
                               </Form.Item>
                             </Col>
                           </Row>
@@ -215,7 +215,7 @@ const Joker = () => {
                                             label="Name"
                                             rules={[{ required: true }]}
                                           >
-                                            <Input />
+                                            <Input placeholder="Enter Your compny name" />
                                           </Form.Item>
                                         </Col>
                                       </Row>
@@ -227,7 +227,7 @@ const Joker = () => {
                                             label="Location"
                                             rules={[{ required: true }]}
                                           >
-                                            <Input />
+                                            <Input placeholder="Enter Your location" />
                                           </Form.Item>
                                         </Col>
                                       </Row>
@@ -239,7 +239,7 @@ const Joker = () => {
                                             name={[name, "desciption"]}
                                             label="Desciption"
                                           >
-                                            <Input.TextArea />
+                                            <Input.TextArea placeholder="Enter Your desciption" />
                                           </Form.Item>
                                         </Col>
                                       </Row>
@@ -252,7 +252,7 @@ const Joker = () => {
                                             name={[name, "jobpost"]}
                                             label="Job post"
                                           >
-                                            <Input />
+                                            <Input placeholder="Enter Your job post" />
                                           </Form.Item>
                                         </Col>
                                       </Row>
@@ -423,7 +423,7 @@ const Joker = () => {
                                       label="Name"
                                       rules={[{ required: true }]}
                                     >
-                                      <Input />
+                                      <Input placeholder="Enter Your education" />
                                     </Form.Item>
                                   </Col>
                                 </Row>
@@ -435,7 +435,7 @@ const Joker = () => {
                                       label="Location"
                                       rules={[{ required: true }]}
                                     >
-                                      <Input />
+                                      <Input placeholder="Enter Your location" />
                                     </Form.Item>
                                   </Col>
                                 </Row>
@@ -447,7 +447,7 @@ const Joker = () => {
                                       name={[name, "e_about"]}
                                       label="About"
                                     >
-                                      <Input.TextArea />
+                                      <Input.TextArea placeholder="Typing..." />
                                     </Form.Item>
                                   </Col>
                                 </Row>
@@ -512,7 +512,7 @@ const Joker = () => {
                                       label="project Name"
                                       rules={[{ required: true }]}
                                     >
-                                      <Input />
+                                      <Input placeholder="Enter Your project" />
                                     </Form.Item>
                                   </Col>
                                 </Row>
@@ -524,7 +524,7 @@ const Joker = () => {
                                       label="project Role"
                                       rules={[{ required: true }]}
                                     >
-                                      <Input />
+                                      <Input placeholder="Enter Your project role" />
                                     </Form.Item>
                                   </Col>
                                 </Row>
@@ -549,7 +549,7 @@ const Joker = () => {
                                       name={[name, "p_desc"]}
                                       label="Desciption"
                                     >
-                                      <Input.TextArea />
+                                      <Input.TextArea placeholder="Enter your description" />
                                     </Form.Item>
                                   </Col>
                                 </Row>
